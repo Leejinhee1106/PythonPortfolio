@@ -1,0 +1,18 @@
+{% extends "master.html" %} #네비바 임포트
+
+{% block title %}
+생성형 AI 멤버즈 여러분들
+{% endblock %}
+
+{% block content %}
+<h1 class="text-danger">{{ greeting }}</h1>
+<h1 class="text-danger">{{ total }}</h1>
+<h1 class="text-warning">{{ mean }}</h1>
+
+<!--파이썬 코드쓰기: html에서 파이선 코드를 쓰려면 장고를 설치해야 함 - 장고 코드에서 {% %)-->
+{%if greeting == 1%}
+                <h1 class="my-3 text-primary">HI JINI</h1>
+{%else%}
+                <h1 class="text-primary fw-bold">HELLo JINI</h1>
+{%endif%}
+{% endblock %}

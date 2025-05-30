@@ -1,0 +1,13 @@
+{% extends "master.html" %}
+
+{% block title %}
+python - for
+{% endblock %}
+
+{% block content %}
+    {% for x in cars %}
+<h1>{{ x.brand }}</h1>
+<p>{{ x.model }}</p>
+<p>{{ x.year }}</p>
+    {% endfor %}
+{% endblock %}
