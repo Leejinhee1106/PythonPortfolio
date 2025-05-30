@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+
+{% block title %}
+Academy - all Members -> 상세페이지
+{% endblock %}
+
+{% block content %}
+<h1 class="mt-3 mb-2">{{ mymember.lastname }} {{ mymember.firstname }}</h1>
+<p>Phone : {{ mymember.phone }}</p>
+<p>JoinDate : {{ mymember.joined_date }}</p>
+<p>Back to <a href="/members">모든 멤버로</a></p>
+{% endblock %}

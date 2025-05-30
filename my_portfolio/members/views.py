@@ -2,6 +2,7 @@
 # from tempfile import template
 from django.http import HttpResponse
 from django.template import loader
+from .models import Member
 
 #메인
 def main(request):
@@ -28,21 +29,12 @@ def syntax(request):
     return HttpResponse(template.render(context, request))
 
 def members(request):
-    template = loader.get_template('members.html')
-    return HttpResponse(template.render())
-
-    arr = np.array([1, 2, 3, 4, 5])  # 배열생성
-    total = np.sum(arr)  # 배열의총합
-    mean = np.mean(arr)  # 배열의평균
-
+    mymembers = Member.objects.all().values()
+    template = loader.get_template('all_members.html')
     context = {
-        'greeting':'hello, Members!',
-        'total':total,
-        'mean':mean
+        'mymembers' : mymembers,
     }
-
-    # 결과를 템플릿으로 전달
-    return render(request, 'members.html',context)
+    return HttpResponse(template.render(context, request))
 
 def forloop(request):
     template = loader.get_template('forloop.html')
@@ -65,3 +57,11 @@ def forloop(request):
             }]
     }
     return HttpResponse(template.render(context, request))
+
+def details(request, id):
+  mymember = Member.objects.get(id=id)
+  template = loader.get_template('details.html')
+  context = {
+    'mymember': mymember,
+  }
+  return HttpResponse(template.render(context, request))
